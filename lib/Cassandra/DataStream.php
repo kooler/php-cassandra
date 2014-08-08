@@ -43,7 +43,8 @@ class DataStream
    * @return int
    */
   public function readChar() {
-    return reset(unpack('C', $this->read(1)));
+      $array = unpack('C', $this->read(1));
+      return reset($array);
   }
 
   /**
@@ -52,7 +53,8 @@ class DataStream
    * @return int
    */
   public function readShort() {
-    return reset(unpack('n', $this->read(2)));
+      $array = unpack('n', $this->read(2));
+      return reset($array);
   }
 
   /**
@@ -61,7 +63,9 @@ class DataStream
    * @return int
    */
   public function readInt() {
-    return reset(unpack('N', $this->read(4)));
+      $data = $this->read(4);
+      $array = unpack('N', $data);
+      return reset($array);
   }
 
   /**
